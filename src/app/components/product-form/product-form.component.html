@@ -1,0 +1,46 @@
+<form #f="ngForm" (ngSubmit)="addProduct(f)">
+  <ul>
+    <li>
+      <label for="inputNaam">Naam: </label>
+      <input
+        type="text"
+        id="inputNaam"
+        [(ngModel)]="newProduct.name"
+        name="modelName"
+        required
+        pattern="^[a-zA-Z0-9 .-]+$"
+        #inputName="ngModel"
+      />
+      <span 
+        *ngIf="(inputName.touched || inputName.dirty) && inputName.invalid"
+      >
+        *
+      </span>
+ 
+      <div
+        *ngIf="(inputName.touched || inputName.dirty) && inputName.hasError('required')"
+      >
+        Vul dit veld in
+      </div>
+      <div
+        *ngIf="(inputName.touched || inputName.dirty) && inputName.hasError('pattern')"
+      >
+        Enkel letters, cijfers en normale tekens
+      </div>
+    </li>
+    <li>
+      <label for="inputPrijs">Prijs: </label>
+      <input type="number" id="inputPrijs" [(ngModel)]="newProduct.price" name="modelPrice"/>
+    </li>
+    <li>
+      <label for="inputFoto">Foto: </label>
+      <input type="text" id="inputFoto" [(ngModel)]="newProduct.photo" name="modelPhoto"/>
+    </li>
+    <li>
+      <pre>Form model: {{ f.value | json }}</pre>
+      <pre>Data model: {{ newProduct | json }}</pre>
+    </li>
+  </ul>
+
+  <button [disabled]="!f.valid">Voeg toe</button>
+</form>

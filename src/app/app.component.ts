@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Product, createProduct } from 'src/models/product';
+import { Product } from 'src/models/product';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +7,6 @@ import { Product, createProduct } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  newProduct = createProduct();
-
   products: Product[] = [
     { 
       id: 1,
@@ -33,10 +30,8 @@ export class AppComponent {
     },
   ];
 
-  addProduct(form: NgForm) {
-    this.products.push(this.newProduct);
-    this.newProduct = createProduct();
-    form.reset();
+  onProductAdded(productToAdd: Product) {
+    this.products.push(productToAdd);
   }
 
   onProductDeleted(productToDelete: Product) {

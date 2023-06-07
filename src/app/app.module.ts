@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-demo.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -16,6 +17,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     LifecycleComponent,
     LifecycleDemoComponent,
     ProductListComponent,
+    ProductFormComponent,
   ],
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken
