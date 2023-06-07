@@ -19,7 +19,6 @@ export class AppComponent {
   // newProduct = {} as Product;
   newProduct = createProduct();
 
-
   products: Product[] = [
     { 
       id: 1,
@@ -47,5 +46,9 @@ export class AppComponent {
     this.products.push(this.newProduct);
     this.newProduct = createProduct();
     form.reset();
+  }
+
+  deleteProduct(productToDelete: Product) {
+    this.products = this.products.filter((product) => product !== productToDelete);
   }
 }

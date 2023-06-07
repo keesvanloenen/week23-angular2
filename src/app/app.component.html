@@ -21,6 +21,7 @@
       <th>Naam</th>
       <th>Prijs</th>
       <th>Foto</th>
+      <th>Actie</th>
     </tr>
   </thead>
   <tbody>
@@ -29,6 +30,7 @@
       <td>{{ product.name | camelcase }}</td>
       <td>{{ product.price | currency : "EUR" }}</td>
       <td><img [src]="product.photo" [alt]="products[0].id" /></td>
+      <td><button (click)="deleteProduct(product)">Wis</button></td>
     </tr>
   </tbody>
 </table>
