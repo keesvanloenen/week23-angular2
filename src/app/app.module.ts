@@ -7,6 +7,7 @@ import { CamelCasePipe } from 'src/pipes/camel-case.pipe';
 import { FormsModule } from '@angular/forms';
 import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-demo.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -14,6 +15,7 @@ import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-de
     CamelCasePipe,
     LifecycleComponent,
     LifecycleDemoComponent,
+    ProductListComponent,
   ],
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken

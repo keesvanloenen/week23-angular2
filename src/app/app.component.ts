@@ -8,9 +8,6 @@ import { Product, createProduct } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-
-  // newProduct = {} as Product;
   newProduct = createProduct();
 
   products: Product[] = [
@@ -42,7 +39,7 @@ export class AppComponent {
     form.reset();
   }
 
-  deleteProduct(productToDelete: Product) {
+  onProductDeleted(productToDelete: Product) {
     this.products = this.products.filter((product) => product !== productToDelete);
   }
 }
