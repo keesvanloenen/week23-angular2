@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from 'src/models/product';
+import { NgForm } from '@angular/forms';
+import { Product, createProduct } from 'src/models/product';
 
 @Component({
   selector: 'app-root',
@@ -7,15 +8,8 @@ import { Product } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  searchTerm = '';
-  changeProperty() {
-    this.products[0].name = 'Appelsap';
-  }
-  changeReference() {
-    const cloneProducts = [...this.products];
-    cloneProducts[0].name = 'Appelsap';
-    this.products = cloneProducts;
-  }
+  // newProduct = {} as Product;
+  newProduct = createProduct();
 
 
   products: Product[] = [
@@ -41,9 +35,13 @@ export class AppComponent {
     },
   ];
 
+  addProduct(form: NgForm) {
+    this.products.push(this.newProduct);
+    this.newProduct = createProduct();
+    form.reset();
+  }
+
   hoogOp(product: Product) {
     product.price += 10;
   }
-
-
 }
