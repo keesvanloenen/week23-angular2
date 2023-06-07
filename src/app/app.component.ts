@@ -8,13 +8,7 @@ import { Product, createProduct } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  toonLifecycle = true;
-  parentMessage = 'Hallo vanuit parent';
-  childMessage = '';
 
-  onMessageSent(childMessage: string) {
-    this.childMessage = childMessage;
-  }
 
   // newProduct = {} as Product;
   newProduct = createProduct();

@@ -1,0 +1,15 @@
+<app-lifecycle
+  *ngIf="toonLifecycle"
+  [message]="parentMessage"
+  (messageSent)="onMessageSent($event)"
+></app-lifecycle>
+
+<button (click)="toonLifecycle = !toonLifecycle">
+  Toggle Lifecycle
+</button>
+
+<button (click)="parentMessage = parentMessage + '!'">
+  Wijzig Parent message: triggers ngOnInit()
+</button>
+
+<p>Parent meldt: {{ childMessage }}</p>
