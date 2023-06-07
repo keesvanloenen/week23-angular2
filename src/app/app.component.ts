@@ -8,6 +8,14 @@ import { Product, createProduct } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  toonLifecycle = true;
+  parentMessage = 'Hallo vanuit parent';
+  childMessage = '';
+
+  onMessageSent(childMessage: string) {
+    this.childMessage = childMessage;
+  }
+
   // newProduct = {} as Product;
   newProduct = createProduct();
 
@@ -39,9 +47,5 @@ export class AppComponent {
     this.products.push(this.newProduct);
     this.newProduct = createProduct();
     form.reset();
-  }
-
-  hoogOp(product: Product) {
-    product.price += 10;
   }
 }

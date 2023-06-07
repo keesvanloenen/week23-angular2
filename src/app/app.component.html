@@ -1,3 +1,17 @@
+<h2 Lifecycle>Lifecycle</h2>
+
+<app-lifecycle 
+  *ngIf="toonLifecycle"
+  [message]="parentMessage"
+  (messageSent)="onMessageSent($event)"
+></app-lifecycle>
+
+<button (click)="toonLifecycle = !toonLifecycle">Toggle Lifecycle</button>
+<button (click)="parentMessage = parentMessage + '!'">Wijzig Parent message: triggers ngOnInit()</button>
+<p>Parent meldt: {{ childMessage }}</p>
+
+<hr>
+
 <h2>Producten</h2>
 
 <table>
@@ -10,7 +24,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products" (click)="hoogOp(product)">
+    <tr *ngFor="let product of products">
       <td [innerText]="product.id"></td>
       <td>{{ product.name | camelcase }}</td>
       <td>{{ product.price | currency : "EUR" }}</td>
@@ -21,10 +35,11 @@
 
 <hr />
 
+<h2>Voeg product toe</h2>
 <form #f="ngForm" (ngSubmit)="addProduct(f)">
   <ul>
     <li>
-      <label for="inputNaam">Naam:</label>
+      <label for="inputNaam">Naam: </label>
       <input
         type="text"
         id="inputNaam"
@@ -50,11 +65,11 @@
     </div>
     </li>
     <li>
-      <label for="inputPrijs">Prijs:</label>
+      <label for="inputPrijs">Prijs: </label>
       <input type="number" id="inputPrijs" [(ngModel)]="newProduct.price" name="modelPrice"/>
     </li>
     <li>
-      <label for="inputFoto">Foto:</label>
+      <label for="inputFoto">Foto: </label>
       <input type="text" id="inputFoto" [(ngModel)]="newProduct.photo" name="modelPhoto"/>
     </li>
     <li>
