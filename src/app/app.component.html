@@ -1,5 +1,10 @@
 <h2>Producten</h2>
 
+<!-- <input type="text" placeholder="Typ uw prijs" [value]="price" (input)="changePrice($event)"/>{{ price }} -->
+<!-- <input type="text" placeholder="Typ uw prijs" [(ngModel)]="price">{{ price }} -->
+<input type="text" placeholder="Wat is het zoekargument" [(ngModel)]="searchTerm">{{ searchTerm }}
+
+
 <table>
   <thead>
     <tr>
@@ -10,14 +15,14 @@
     </tr>
   </thead>
   <tbody>
-    <tr 
-      *ngFor="let product of products"
-      (click)="hoogOp(product)"
-    >
+    <tr *ngFor="let product of products | filter: searchTerm" (click)="hoogOp(product)">
       <td [innerText]="product.id"></td>
-      <td>{{product.name | camelcase }}</td>
-      <td>{{product.price | currency: 'EUR'}}</td>
-      <td><img [src]="product.photo" [alt]="products[0].id"></td>
+      <td>{{ product.name | camelcase }}</td>
+      <td>{{ product.price | currency : "EUR" }}</td>
+      <td><img [src]="product.photo" [alt]="products[0].id" /></td>
     </tr>
   </tbody>
 </table>
+
+<button (click)="changeProperty()">Change Property</button>
+<button (click)="changeReference()">Change Reference</button>

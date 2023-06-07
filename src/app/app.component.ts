@@ -7,8 +7,17 @@ import { Product } from 'src/models/product';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  procentje = 0.15;
-  datumpje = new Date();
+  searchTerm = '';
+  changeProperty() {
+    this.products[0].name = 'Appelsap';
+  }
+  changeReference() {
+    const cloneProducts = [...this.products];
+    cloneProducts[0].name = 'Appelsap';
+    this.products = cloneProducts;
+  }
+
+
   products: Product[] = [
     { 
       id: 1,
