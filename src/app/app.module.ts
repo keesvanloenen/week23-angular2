@@ -9,6 +9,7 @@ import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-demo.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -23,7 +24,9 @@ import { ProductFormComponent } from './components/product-form/product-form.com
   BrowserModule,   // components, directives, pipes te kunnen gebruiken
   FormsModule,
   ],
-  providers: [],    // DI (old-style)
+  providers: [
+    // { provide: ProductService, useClass: ProductService },
+  ],    // DI (old-style), services...
   bootstrap: [AppComponent]
 })
 export class AppModule { }

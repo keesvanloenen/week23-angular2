@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ProductService } from 'src/app/services/product.service';
 import { Product, createProduct } from 'src/models/product';
 
 @Component({
@@ -6,11 +7,16 @@ import { Product, createProduct } from 'src/models/product';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent {
-  @Input() products: Product[] = [];
-  @Output() productDeleted = new EventEmitter<Product>();
+export class ProductListComponent implements OnInit {
+  products: Product[] = [];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.products = this.productService.products;
+  }
 
   deleteProduct(product: Product) {
-    this.productDeleted.emit(product);
+    this.productService.deleteProduct(product);
   }
 }

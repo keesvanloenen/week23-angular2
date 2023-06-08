@@ -5,16 +5,9 @@
 <hr />
 <h2>Producten</h2>
 
-<app-product-list
-  [products]="products"
-  (productDeleted)="onProductDeleted($event)"
->
-</app-product-list>
+<app-product-list></app-product-list>
 
 <hr />
 <h2>Voeg product toe</h2>
 
-<app-product-form 
-  (productAdded)="onProductAdded($event)"
->
-</app-product-form>
+<app-product-form></app-product-form>
