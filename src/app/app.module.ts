@@ -8,6 +8,8 @@ import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-de
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { HttpClientModule} from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -17,11 +19,13 @@ import { HttpClientModule} from '@angular/common/http';
     LifecycleDemoComponent,
     ProductListComponent,
     ProductFormComponent,
+    ProductsComponent,
   ],
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken
   FormsModule,
   HttpClientModule,
+  AppRoutingModule,
   ],
   providers: [      // DI (old-style), services...
     // { provide: ProductService, useClass: ProductService },
