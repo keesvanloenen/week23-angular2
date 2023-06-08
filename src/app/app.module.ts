@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { CamelCasePipe } from 'src/pipes/camel-case.pipe';
@@ -9,8 +7,8 @@ import { LifecycleComponent } from './components/lifecycle/lifecycle.component';
 import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-demo.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
-import { ProductService } from './services/product.service';
 import { HttpClientModule} from '@angular/common/http';
+
 @NgModule({
   declarations: [   // components, directives, pipes
     AppComponent,
@@ -25,9 +23,10 @@ import { HttpClientModule} from '@angular/common/http';
   FormsModule,
   HttpClientModule,
   ],
-  providers: [
+  providers: [      // DI (old-style), services...
     // { provide: ProductService, useClass: ProductService },
-  ],    // DI (old-style), services...
+    // ProductService
+  ],   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

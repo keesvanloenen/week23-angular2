@@ -1,30 +1,27 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { Product } from "src/models/product";
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-    products: Product[] = [];   // hulparray
+    // products: Product[] = [];   // hulparray
     private URL = 'http://localhost:3000/dranken';
 
-    subject = new Subject<Product[]>;
+    subject = new BehaviorSubject<Product[]>([]);
 
     constructor(private httpClient: HttpClient) {}
     // private httpClient = inject(HttpClient);    // Angular 16
     
     getAll(): Observable<Product[]> {
-      // return this.httpClient
-      //   .get<Product[]>(this.URL);
-      this.httpClient
+       this.httpClient
         .get<Product[]>(this.URL)
         .subscribe((products: Product[]) => {
-          console.log('getAll()')
-          this.products = products;     // vul hulparray
+          console.log('getAll()');
           this.subject.next(products);  // voeg toe aan stream
         });
 
-      return this.subject;
+      return this.subject.asObservable();
     }
 
     addProduct(product: Product) {
@@ -32,8 +29,7 @@ export class ProductService {
         .post<Product>(this.URL, product)
         .subscribe((product: Product) => {
           console.log('addProduct()');
-          this.products.push(product);    // vul hulparray
-          this.subject.next(this.products);
+          this.subject.next([...this.subject.getValue(), product]);
         });
     }
   
@@ -42,8 +38,8 @@ export class ProductService {
         .delete<Product>(`${this.URL}/${product.id}`)
         .subscribe(() => {
           console.log('deleteProduct()');
-          this.products = this.products.filter((p) => p !== product);
-          this.subject.next(this.products);
+          const newProduct = this.subject.getValue().filter((p: Product) => p.id !== product.id);
+          this.subject.next(newProduct);
         });
     }
 }
