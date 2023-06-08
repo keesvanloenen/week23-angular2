@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ProductService } from 'src/app/services/product.service';
-import { Product, createProduct } from 'src/models/product';
+import { createProduct } from 'src/models/product';
 
 @Component({
   selector: 'app-product-form',
@@ -10,13 +10,14 @@ import { Product, createProduct } from 'src/models/product';
 })
 export class ProductFormComponent {
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService) {}
 
-  }
   newProduct = createProduct();
 
   addProduct(form: NgForm) {
-    this.productService.addProduct(this.newProduct);
+    this.productService
+      .addProduct(this.newProduct);
+
     this.newProduct = createProduct();
     form.reset();
   }

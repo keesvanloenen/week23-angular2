@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./lifecycle-demo.component.scss']
 })
 export class LifecycleDemoComponent {
-  toonLifecycle = true;
+  toonLifecycle = false;
   parentMessage = 'Hallo vanuit parent';
   childMessage = '';
 

@@ -10,7 +10,7 @@ import { LifecycleDemoComponent } from './components/lifecycle-demo/lifecycle-de
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { ProductService } from './services/product.service';
-
+import { HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [   // components, directives, pipes
     AppComponent,
@@ -23,6 +23,7 @@ import { ProductService } from './services/product.service';
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken
   FormsModule,
+  HttpClientModule,
   ],
   providers: [
     // { provide: ProductService, useClass: ProductService },

@@ -1,38 +1,49 @@
-import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Injectable, inject } from "@angular/core";
+import { Observable, Subject } from "rxjs";
 import { Product } from "src/models/product";
 
 @Injectable({ providedIn: 'root' })
 export class ProductService {
-  products: Product[] = [
-      { 
-        id: 1,
-        name: 'Witte thee',
-        price: 2.99,
-        photo: 'https://static.ah.nl/dam/product/AHI_43545239393334383134?revLabel=1&rendition=200x200_JPG_Q85&fileType=binary'
-      },
-      {
-        id: 2,
-        name: 'icetea',
-        price: 1.75,
-        photo:
-          'https://static.ah.nl/dam/product/AHI_43545239383733303439?revLabel=1&rendition=200x200_JPG_Q85&fileType=binary',
-      },
-      {
-        id: 3,
-        name: 'Bourbon',
-        price: 19,
-        photo:
-          'https://static.ah.nl/dam/product/AHI_43545239373231323932?revLabel=1&rendition=200x200_JPG_Q85&fileType=binary',
-      },
-    ];
-  
+    products: Product[] = [];   // hulparray
+    private URL = 'http://localhost:3000/dranken';
+
+    subject = new Subject<Product[]>;
+
+    constructor(private httpClient: HttpClient) {}
+    // private httpClient = inject(HttpClient);    // Angular 16
+    
+    getAll(): Observable<Product[]> {
+      // return this.httpClient
+      //   .get<Product[]>(this.URL);
+      this.httpClient
+        .get<Product[]>(this.URL)
+        .subscribe((products: Product[]) => {
+          console.log('getAll()')
+          this.products = products;     // vul hulparray
+          this.subject.next(products);  // voeg toe aan stream
+        });
+
+      return this.subject;
+    }
+
     addProduct(product: Product) {
-      console.log('add', product);
-      this.products.push(product);
+      this.httpClient
+        .post<Product>(this.URL, product)
+        .subscribe((product: Product) => {
+          console.log('addProduct()');
+          this.products.push(product);    // vul hulparray
+          this.subject.next(this.products);
+        });
     }
   
     deleteProduct(product: Product) {
-      console.log('delete', product);
-      this.products = this.products.filter((p) => p !== product);
+      this.httpClient
+        .delete<Product>(`${this.URL}/${product.id}`)
+        .subscribe(() => {
+          console.log('deleteProduct()');
+          this.products = this.products.filter((p) => p !== product);
+          this.subject.next(this.products);
+        });
     }
 }

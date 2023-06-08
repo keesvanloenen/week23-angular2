@@ -7,7 +7,6 @@ export interface Product {
 
 export function createProduct(overrides?: Partial<Product>): Product {
   return {
-    id: -1,
     name: '',
     price: 0,
     ...overrides,

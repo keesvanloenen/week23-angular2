@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { Product, createProduct } from 'src/models/product';
@@ -10,10 +11,17 @@ import { Product, createProduct } from 'src/models/product';
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+  ) {}
 
   ngOnInit(): void {
-    this.products = this.productService.products;
+    this.productService
+      .getAll()
+      .subscribe((products: Product[]) => {
+        this.products = products;
+        console.log('hey, nieuwe producten!');
+      });
   }
 
   deleteProduct(product: Product) {
