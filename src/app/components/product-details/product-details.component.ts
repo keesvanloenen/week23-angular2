@@ -29,6 +29,6 @@ export class ProductDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       const id = parseInt(params['id']);
       this.product$ = this.productService.getProduct(id);
-    })
+    });
   }
 }

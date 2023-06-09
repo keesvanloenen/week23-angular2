@@ -1,0 +1,8 @@
+<form [formGroup]="addProductForm">
+  <input type="text" id="input-name" formControlName="name" placeholder="Vul naam in">
+  <input type="number" id="input-price" formControlName="price" placeholder="Vul prijs in"/>
+  <input type="text" id="input-photo" formControlName="photo" placeholder="Vul optioneel foto in"/>
+  
+</form>
+
+<pre>Value: {{ addProductForm.value | json }}</pre>
