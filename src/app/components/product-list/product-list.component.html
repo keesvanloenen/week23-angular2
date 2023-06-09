@@ -9,12 +9,17 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of products">
-      <td [innerText]="product.id"></td>
+    <tr *ngFor="let product of products; let i=index; let n=count">
+      <td>i is: {{i}}/{{n}}</td>
       <td>{{ product.name | camelcase }}</td>
       <td>{{ product.price | currency : "EUR" }}</td>
-      <td><img [src]="product.photo" [alt]="products[0].id" /></td>
+      <!-- <td *ngIf="product.photo"><img [src]="product.photo" [alt]="products[0].id" /></td>
+      <td *ngIf="!product.photo"><img src="./assets/notfound.jpeg" alt="image not found" /></td> -->
+      <td *ngIf="product.photo; else notFound"><img [src]="product.photo" [alt]="products[0].id" /></td>
       <td><button (click)="deleteProduct(product)" class="delete-btn">Wis</button></td>
     </tr>
   </tbody>
 </table>
+<ng-template #notFound>
+  <img src="./assets/notfound.jpeg" alt="image not found" />
+</ng-template>

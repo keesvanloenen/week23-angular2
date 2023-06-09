@@ -10,6 +10,9 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { ProductsComponent } from './components/products/products.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -20,6 +23,9 @@ import { ProductsComponent } from './components/products/products.component';
     ProductListComponent,
     ProductFormComponent,
     ProductsComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    ProductDetailsComponent,
   ],
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken

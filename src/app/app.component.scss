@@ -1,0 +1,15 @@
+ul {
+  list-style-type: none;
+  display: flex;
+}
+
+li {
+  padding: 0.7em;
+  margin: 0 10px; 
+  background-color: aqua;
+  cursor: pointer;
+}
+
+li.active {
+  background-color: yellow;
+}
