@@ -14,6 +14,7 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductReactFormComponent } from './components/product-react-form/product-react-form.component';
+import { AutoTabDirective } from './directives/auto-tab.directive';
 
 @NgModule({
   declarations: [   // components, directives, pipes
@@ -28,6 +29,7 @@ import { ProductReactFormComponent } from './components/product-react-form/produ
     PageNotFoundComponent,
     ProductDetailsComponent,
     ProductReactFormComponent,
+    AutoTabDirective,
   ],
   imports: [        // welke modules wil ik importeren om uit die module
   BrowserModule,   // components, directives, pipes te kunnen gebruiken

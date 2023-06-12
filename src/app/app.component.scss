@@ -3,13 +3,14 @@ ul {
   display: flex;
 }
 
-li {
+a {
   padding: 0.7em;
   margin: 0 10px; 
   background-color: aqua;
-  cursor: pointer;
+  text-decoration: none;
+  color: black;
 }
 
-li.active {
+a.active {
   background-color: yellow;
 }

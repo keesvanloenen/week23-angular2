@@ -1,5 +1,3 @@
-<p>product-details works!</p>
-
 <!-- {{ product$ | async | json }} -->
 
 <div *ngIf="(product$ | async) as product; else loading">
@@ -13,11 +11,6 @@
 
 <ng-template #loading>Aan het laden...</ng-template>
 
-
-<!-- En het nummer is .... {{id}}
-
-<img [src]="product.photo" [alt]="product.name">
-<ul>
-  <li><strong>Name: {{ product.name }}</strong></li>
-  <li>prijs: {{ product.price }}</li>
-</ul> -->
+<button class="btn btn-primary" [routerLink]="['/products']">
+  Terug naar lijst met produkten
+</button>

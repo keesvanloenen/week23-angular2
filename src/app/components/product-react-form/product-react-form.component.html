@@ -1,8 +1,44 @@
-<form [formGroup]="addProductForm">
-  <input type="text" id="input-name" formControlName="name" placeholder="Vul naam in">
-  <input type="number" id="input-price" formControlName="price" placeholder="Vul prijs in"/>
-  <input type="text" id="input-photo" formControlName="photo" placeholder="Vul optioneel foto in"/>
-  
-</form>
+<h3>Model-driven</h3>
+<form (ngSubmit)="addProductModelDriven()" [formGroup]="addProductForm">
+  <ul>
+    <li>
+      <label for="inputNaamModelDriven">Naam: </label>
+      <input
+        type="text"
+        id="inputNaamModelDriven"
+        formControlName="name"
+      />
+      <span *ngIf="(name.touched || name.dirty) && name.invalid">
+        *
+      </span>
 
-<pre>Value: {{ addProductForm.value | json }}</pre>
+      <div *ngIf="(name.touched || name.dirty) && name.hasError('required')">
+        Vul dit veld in
+      </div>
+      <div *ngIf="(name.touched || name.dirty) && name.hasError('pattern')">
+        Enkel letters, cijfers en normale tekens
+      </div>
+    </li>
+    <li>
+      <label for="inputPrijsModelDriven">Prijs: </label>
+      <input
+        type="number"
+        id="inputPrijsModelDriven"
+        formControlName="price"
+      />
+    </li>
+    <li>
+      <label for="inputFoto">Foto: </label>
+      <input
+        type="text"
+        id="inputFotoModelDriven"
+        formControlName="photo"
+      />
+    </li>
+    <li>
+      <pre>Value: {{ addProductForm.value | json }}</pre>
+    </li>
+  </ul>
+
+  <button [disabled]="!addProductForm.valid">Voeg toe</button>
+</form>
